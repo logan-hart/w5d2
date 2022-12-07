@@ -103,15 +103,9 @@ def populous_continents
       continent
     FROM
       countries
-    WHERE
-      ( SELECT
-        SUM(population) >= 100000000
-        FROM 
-        countries
-        GROUP BY
-        continent) = true;
-
-
-
+    GROUP BY
+      continent
+    HAVING
+      SUM(population) > 100000000
   SQL
 end
